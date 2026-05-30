@@ -1,0 +1,10 @@
+services:
+  stress-tester:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: stress-tester
+    command:
+      - "--url=${URL:-http://google.com}"
+      - "--requests=${REQUESTS:-100}"
+      - "--concurrency=${CONCURRENCY:-10}"
