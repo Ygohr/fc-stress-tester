@@ -112,5 +112,39 @@ go run ./cmd/main/main.go --url=http://example.com --requests=100 --concurrency=
 go test ./... -v -race
 ```
 
----
+## Docker
 
+### Build the image
+
+```bash
+docker build -t stress-tester .
+```
+
+### Run the container
+
+```bash
+docker run --rm stress-tester \
+  --url=http://example.com \
+  --requests=1000 \
+  --concurrency=10
+```
+
+### Run with Docker Compose
+
+```bash
+docker compose up --build
+```
+
+With custom parameters:
+
+```bash
+# Linux / macOS
+URL=https://example.com REQUESTS=1000 CONCURRENCY=20 docker compose up --build
+
+# Windows PowerShell
+$env:URL="https://example.com"; $env:REQUESTS=1000; $env:CONCURRENCY=20; docker compose up --build
+
+# Windows CMD
+set URL=https://example.com && set REQUESTS=1000 && set CONCURRENCY=20 && docker compose up --build
+```
+---
